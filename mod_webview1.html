@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Informações do Mod</title>
+    <style>
+        /* Seu CSS existente */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 10px auto;
+            max-width: 120px;
+            height: auto;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .version {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .info-block {
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 10px;
+        }
+        .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+        .value {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 13px;
+        }
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            display: block;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-primary {
+            background: rgba(255,255,255,0.2);
+        }
+        .btn-primary:active {
+            background: rgba(255,255,255,0.3);
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        .btn-secondary:active {
+            background: rgba(255,255,255,0.2);
+            transform: scale(0.98);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 12px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Logo do Mod" class="logo" />
+            <h1 id="appName">Carregando...</h1>
+            <div class="version" id="appVersion">v0.0.0</div>
+        </div>
+
+        <div class="info-block">
+            <div class="label">Desenvolvedor Original</div>
+            <div class="value" id="devName">Carregando...</div>
+        </div>
+
+        <div class="info-block">
+            <div class="label">Modder</div>
+            <div class="value" id="modderName">Carregando...</div>
+        </div>
+
+        <div class="info-block">
+            <div class="label">Recursos do Mod</div>
+            <ul class="features" id="featuresList">
+                <li>Carregando...</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+            <a href="#" class="btn btn-primary" id="telegramBtn">📱 Grupo Telegram</a>
+            <a href="#" class="btn btn-secondary" id="appBtn">🔗 App Original</a>
+        </div>
+
+        <div class="footer">
+            <p>Feito com ❤️ pela comunidade @killerkingMDgrupo</p>
+        </div>
+    </div>
+
+    <script>
+        // URL do arquivo JSON remoto (substitua pela URL real)
+        const configUrl = 'https://seusite.com/config.json';
+
+        fetch(configUrl)
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao carregar configuração');
+            return response.json();
+        })
+        .then(config => {
+            document.getElementById('appName').textContent = config.appName;
+            document.getElementById('appVersion').textContent = 'v' + config.version;
+            document.getElementById('devName').textContent = config.developer;
+            document.getElementById('modderName').textContent = config.modder;
+            
+            const list = document.getElementById('featuresList');
+            list.innerHTML = '';
+            config.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                list.appendChild(li);
+            });
+
+            document.getElementById('telegramBtn').href = config.telegramLink;
+            document.getElementById('appBtn').href = config.appLink;
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            // Aqui um fallback pode ser colocado, caso queira
+        });
+    </script>
+</body>
+</html>
