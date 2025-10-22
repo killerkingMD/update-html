@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Informações do Mod</title>
     <style>
-        /* Seu CSS existente */
         * {
             margin: 0;
             padding: 0;
@@ -143,16 +142,9 @@
         </div>
 
         <div class="info-block">
-                        <div class="label">Recursos do Mod</div>
+            <div class="label">Recursos do Mod</div>
             <ul class="features" id="featuresList">
-                <li>Premium Desbloqueado</li>
-                <li>Sem Anúncios</li>
-                <li>Otimize paradas ilimitadas por rota</li>
-                <li>Navegação do Google no Circuit</li>
-                <li>Inclua paradas por voz ou câmera</li>
-                <li>Especifique janelas de tempo de chegada</li>
-                <li>Localize os pacotes rapidamente com o Localizador</li>
-                
+                <li>Carregando...</li>
             </ul>
         </div>
 
@@ -167,8 +159,8 @@
     </div>
 
     <script>
-        // URL do arquivo JSON remoto (substitua pela URL real)
-        const configUrl = 'https://seusite.com/config.json';
+        // Substitua pela URL correta do seu arquivo JSON no servidor
+        const configUrl = 'https://seusite.com/config.json?v=' + new Date().getTime();
 
         fetch(configUrl)
         .then(response => {
@@ -180,7 +172,7 @@
             document.getElementById('appVersion').textContent = 'v' + config.version;
             document.getElementById('devName').textContent = config.developer;
             document.getElementById('modderName').textContent = config.modder;
-            
+
             const list = document.getElementById('featuresList');
             list.innerHTML = '';
             config.features.forEach(feature => {
@@ -194,7 +186,7 @@
         })
         .catch(error => {
             console.error('Erro:', error);
-            // Aqui um fallback pode ser colocado, caso queira
+            // Você pode colocar um fallback aqui, se quiser
         });
     </script>
 </body>
