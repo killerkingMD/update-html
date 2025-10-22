@@ -128,7 +128,7 @@
         <div class="header">
             <img src="logo.png" alt="Logo do Mod" class="logo" />
             <h1 id="appName">Carregando...</h1>
-            <div class="version" id="appVersion">3.57.1</div>
+            <div class="version" id="appVersion">v0.0.0</div>
         </div>
 
         <div class="info-block">
@@ -144,13 +144,7 @@
         <div class="info-block">
             <div class="label">Recursos do Mod</div>
             <ul class="features" id="featuresList">
-                 <li>Premium Desbloqueado</li>
-                <li>Sem Anúncios</li>
-                <li>Otimize paradas ilimitadas por rota</li>
-                <li>Navegação do Google no Circuit</li>
-                <li>Inclua paradas por voz ou câmera</li>
-                <li>Especifique janelas de tempo de chegada</li>
-                <li>Localize os pacotes rapidamente com o Localizador</li>
+                <li>Carregando...</li>
             </ul>
         </div>
 
@@ -165,9 +159,8 @@
     </div>
 
     <script>
-        // Substitua pela URL correta do seu arquivo JSON no servidor
-        
-const configUrl = "https://github.com/killerkingMD/update-html/blob/main/config.json" + new Date().getTime();
+        const configUrl = 'https://raw.githubusercontent.com/killerkingMD/update-html/main/config.json?v=' + new Date().getTime();
+
         fetch(configUrl)
         .then(response => {
             if (!response.ok) throw new Error('Erro ao carregar configuração');
@@ -192,7 +185,7 @@ const configUrl = "https://github.com/killerkingMD/update-html/blob/main/config.
         })
         .catch(error => {
             console.error('Erro:', error);
-            // Você pode colocar um fallback aqui, se quiser
+            // fallback opcional
         });
     </script>
 </body>
